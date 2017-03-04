@@ -8,12 +8,16 @@
 </head>
 <body>
 
-<script src="text/javascript">
-
+<script>
+var asterixStore = "****************"
 var theWords = ["Apple", "Banana", "Orange", "kiwi"];
-var  theGameWord = theWords.split([Math.floor(Math.random()* theWords.length)]);
-var theWordDisplay = 
-
+var theGameWord = theWords[Math.floor(Math.random()* theWords.length)];
+var dispWord = asterixStore.substring(0,(theGameWord.length));
+console.table(theWords);
+console.log(theGameWord);
+console.log(theGameWord.length);
+console.log(dispWord);
+console.log(dispWord.length)
 
 </script>
 
