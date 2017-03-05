@@ -9,18 +9,48 @@
 <body>
 
 <script>
-var asterixStore = "****************"
-var theWords = ["Apple", "Banana", "Orange", "kiwi"];
+function valIdater(){
+}
+
+
+
+
+
+
+
+var asterixStore = "****************";
+var alphaBet = ['a', 'b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var theWords = ["Apple", "Banana", "Cherry","Kiwi","Lime","Mango","Orange","Plums"];
 var theGameWord = theWords[Math.floor(Math.random()* theWords.length)];
 var dispWord = asterixStore.substring(0,(theGameWord.length));
 console.table(theWords);
 console.log(theGameWord);
 console.log(theGameWord.length);
 console.log(dispWord);
-console.log(dispWord.length)
+console.log(dispWord.length);
+
+
+
+		
+
+// Get and validate input //	
+
+
+document.onkeyup = function() {
+var str = String.fromCharCode(event.keyCode).toLowerCase();
+
+console.log("inside",str);
+// do something  (new (charArray).indexOf('q') == -1) {
+return str;
+} //End get and Validate input function
+
+
+
 
 </script>
 
 
 </body>
 </html>
+
+
