@@ -9,48 +9,92 @@
 <body>
 
 <script>
-function valIdater(){
-}
+
+function upDateDispWord(userGuess,gameWord,dispWord){
+
+	for (var i = 0; i >= gameWord.length; i++){
+		if (userGuess===gameWord[i]){
+			dispWord[i]===userGuess;
+		}
+
+	}
+}// Update displ
+
+function disPlayIcon(){
+
+} // Display the ICON
 
 
-
-
-
-
+function disPlay(){
+	for (var i = 0; i >= dispWord.length; i++) {
+        var dispTile = $("<button>");
+        dispTile.addClass("letter-button letter tile-color");
+        dispTile.attr("data-letter", dispWord[i]);
+        dispTile.text(dispWord[i]);
+        $("#buttons").append(dispTile);
+      }
+ }
+// Show image of current word 
 
 var asterixStore = "****************";
 var alphaBet = ['a', 'b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var theWords = ["Apple", "Banana", "Cherry","Kiwi","Lime","Mango","Orange","Plums"];
-var theGameWord = theWords[Math.floor(Math.random()* theWords.length)];
-var dispWord = asterixStore.substring(0,(theGameWord.length));
+var gameWord = theWords[Math.floor(Math.random()* theWords.length)];
+var dispWord = asterixStore.substring(0,(gameWord.length));
+var userWins = 0, userLosses = 0;
+var playGame=true;
+
 console.table(theWords);
-console.log(theGameWord);
-console.log(theGameWord.length);
+console.log(gameWord);
+console.log(gameWord.length);
 console.log(dispWord);
 console.log(dispWord.length);
 
+// Get and validate input //
 
 
-		
 
-// Get and validate input //	
+			document.onkeyup = function() {
+
+				// Get input
+				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+				//Validate : Is Alpha?
+				if (alphaBet.indexOf(userGuess)== -1){
+					alert(" NOW CUT THAT OUT!!! ");
+				} //Validate
+
+				// Check if the input is in the gameWord
+
+				if(alphaBet.indexOf(gameWord) != -1) {
+
+					upDateDispWord(userGuess,gameWord,dispWord);
+					//Put correct value(s) in appropriate index
+
+					//DISPLAY CURRENT WORD 
+
+					} // GUESS CORRECT
+
+				else {
+						alert(" WRONG!!");
+						 // ALERT USER
+						 // DECREMENT COUNTER 
+						 // DISPLAY UPDATED HANGMAN ICON
+						} // GUESS INCORRECT
 
 
-document.onkeyup = function() {
-var str = String.fromCharCode(event.keyCode).toLowerCase();
+		console.log(userGuess);
+		console.log(alphaBet.indexOf(userGuess));
+		console.log(gameWord,"  ",dispWord, "  ",userGuess)
 
-console.log("inside",str);
-// do something  (new (charArray).indexOf('q') == -1) {
-return str;
-} //End get and Validate input function
-
+				}//End get and Validate input function
 
 
 
 </script>
 
-
 </body>
+
 </html>
 
 
