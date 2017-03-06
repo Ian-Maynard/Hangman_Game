@@ -10,82 +10,85 @@
 
 <script>
 
-function upDateDispWord(userGuess,gameWord,dispWord){
-
-	for (var i = 0; i >= gameWord.length; i++){
-		if (userGuess===gameWord[i]){
-			dispWord[i]===userGuess;
-		}
-
-	}
-}// Update displ
-
-function disPlayIcon(){
-
-} // Display the ICON
+// function upDateDispWord(userGuess,gameWord,dispWord) {
+// } // Update displ
 
 
-function disPlay(){
-	for (var i = 0; i >= dispWord.length; i++) {
-        var dispTile = $("<button>");
-        dispTile.addClass("letter-button letter tile-color");
-        dispTile.attr("data-letter", dispWord[i]);
-        dispTile.text(dispWord[i]);
-        $("#buttons").append(dispTile);
-      }
- }
+
+// function disPlayIcon(){
+
+// } // Display the ICON
+
+
+// function disPlay(){
+// 	for (var i = 0; i >= dispWord.length; i++) {
+//         var dispTile = $("<button>");
+
+//         dispTile.addClass("letter-button letter tile-color");
+//         dispTile.attr("data-letter", dispWord[i]);
+//         dispTile.text(dispWord[i]);
+        
+//         $("#buttons").append(dispTile);
+//       }
+//  }
 // Show image of current word 
 
 var asterixStore = "****************";
-var alphaBet = ['a', 'b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-var theWords = ["Apple", "Banana", "Cherry","Kiwi","Lime","Mango","Orange","Plums"];
+var alphaBet = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var theWords = ["apple", "banana", "cherry","kiwi","lime","mango","orange","plum"];
 var gameWord = theWords[Math.floor(Math.random()* theWords.length)];
 var dispWord = asterixStore.substring(0,(gameWord.length));
 var userWins = 0, userLosses = 0;
-var playGame=true;
+var playGame = true;
+var guessAcc = "";
+var tryCount = 8;
 
-console.table(theWords);
-console.log(gameWord);
-console.log(gameWord.length);
-console.log(dispWord);
-console.log(dispWord.length);
+// console.log(theWords);
+// console.log(gameWord);
+// console.log(gameWord.length);
+// console.log(dispWord);
+// console.log(dispWord.length);
 
 // Get and validate input //
 
-
-
 			document.onkeyup = function() {
-
 				// Get input
 				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-				//Validate : Is Alpha?
-				if (alphaBet.indexOf(userGuess)== -1){
-					alert(" NOW CUT THAT OUT!!! ");
-				} //Validate
+						//Validate: Is Alpha?
+						if (alphaBet.indexOf(userGuess)== -1){
+							alert("Please enter an alphabetic character.");
+							return;
+						} //Validate Alpha
 
-				// Check if the input is in the gameWord
+						// Validate: Has this been entered before? 
+						if (guessAcc.indexOf(userGuess)!= -1){
+							alert("You entered "+userGuess+" already.");
+							tryCount--;
+							return;
+						// DISPLAY UPDATED HANGMAN ICON
+						}//Validate : Entered before
 
-				if(alphaBet.indexOf(gameWord) != -1) {
+						//Validate: correct guess 
+						if (gameWord.indexOf(userGuess) != -1){
+						   guessAcc = guessAcc+userGuess;
+						   //Call Display routine
+						   return;
+						}
+						else {
+							 alert(" WRONG!!");
+							 tryCount--;
+							 // DISPLAY UPDATED HANGMAN ICON
+							 return;
+							 } // GUESS INCORRECT
 
-					upDateDispWord(userGuess,gameWord,dispWord);
-					//Put correct value(s) in appropriate index
+							console.log("Gacc is: ", guessAcc);
+							console.log("Gameword : "+gameWord+" Userguess : "+userGuess+"   Pos  in gameWord "+gameWord.indexOf(userGuess)+"    "+dispWord);
 
-					//DISPLAY CURRENT WORD 
-
-					} // GUESS CORRECT
-
-				else {
-						alert(" WRONG!!");
-						 // ALERT USER
-						 // DECREMENT COUNTER 
-						 // DISPLAY UPDATED HANGMAN ICON
-						} // GUESS INCORRECT
-
-
-		console.log(userGuess);
-		console.log(alphaBet.indexOf(userGuess));
-		console.log(gameWord,"  ",dispWord, "  ",userGuess)
+// console.log(gameWord);
+// console.log(gameWord.length);
+// console.log(dispWord);
+// console.log(dispWord.length);
 
 				}//End get and Validate input function
 
