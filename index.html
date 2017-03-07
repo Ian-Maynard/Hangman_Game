@@ -6,32 +6,46 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
+
 <body>
 
 <script>
 
 // function upDateDispWord(userGuess,gameWord,dispWord) {
 // } // Update displ
-
-
-
 // function disPlayIcon(){
-
 // } // Display the ICON
 
+function disPlaytile(){
+var printWord="", dispText= "";
+console.log("Gameword. Length : "+gameWord.length);
 
-// function disPlay(){
-// 	for (var i = 0; i >= dispWord.length; i++) {
-//         var dispTile = $("<button>");
+	for (var i = 0; i <= gameWord.length; i++) {
+		console.log("Incrementer ",i);
+			if (guessAcc.indexOf(gameWord[i])!= -1){
+			   printWord=printWord+gameWord[i];
+			   console.log("Gameword: "+gameWord[i]+" printWord: "+ printWord);
+			}
+        // var dispTile = $("<button>");
+        // dispTile.addClass("letter-button letter tile-color");
+        // dispTile.attr("data-letter", gameWord[i]);
+        // dispTile.text(gameWord[i]);
+        // $("#buttons").append(dispWord);
+      }
 
-//         dispTile.addClass("letter-button letter tile-color");
-//         dispTile.attr("data-letter", dispWord[i]);
-//         dispTile.text(dispWord[i]);
-        
-//         $("#buttons").append(dispTile);
-//       }
-//  }
-// Show image of current word 
+
+	      if (printWord==gameWord)  {
+	      	dispText=" You are the Winner! "+printWord+
+	      	" and "+gameWord+" MATCH!"; 
+	      }
+		  else {
+			dispText="Not there yet! "+printWord+
+	      	" and "+gameWord+" Don't MATCH!"; 
+	      	console.log("Exiting - Gameword: "+gameWord+" printWord: "+ printWord);
+		  }   		
+	alert(dispText);
+ }  // End disPlaytile 
 
 var asterixStore = "****************";
 var alphaBet = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
@@ -40,6 +54,8 @@ var gameWord = theWords[Math.floor(Math.random()* theWords.length)];
 var dispWord = asterixStore.substring(0,(gameWord.length));
 var userWins = 0, userLosses = 0;
 var playGame = true;
+var youWin   = false;
+var youLose	 = false;
 var guessAcc = "";
 var tryCount = 8;
 
@@ -54,6 +70,9 @@ var tryCount = 8;
 			document.onkeyup = function() {
 				// Get input
 				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+console.log("Gacc is: ", guessAcc);
+console.log("Gameword : "+gameWord+" Userguess : "+userGuess);
 
 						//Validate: Is Alpha?
 						if (alphaBet.indexOf(userGuess)== -1){
@@ -71,19 +90,21 @@ var tryCount = 8;
 
 						//Validate: correct guess 
 						if (gameWord.indexOf(userGuess) != -1){
-						   guessAcc = guessAcc+userGuess;
+						   alert("Correct Guess!!")
+						   guessAcc=guessAcc+userGuess;
+						   disPlaytile();
 						   //Call Display routine
 						   return;
 						}
 						else {
-							 alert(" WRONG!!");
+							 alert("WRONG!!");
 							 tryCount--;
 							 // DISPLAY UPDATED HANGMAN ICON
 							 return;
 							 } // GUESS INCORRECT
 
-							console.log("Gacc is: ", guessAcc);
-							console.log("Gameword : "+gameWord+" Userguess : "+userGuess+"   Pos  in gameWord "+gameWord.indexOf(userGuess)+"    "+dispWord);
+				console.log("Gacc is: ", guessAcc);
+console.log("Gameword : "+gameWord+" Userguess : "+userGuess);
 
 // console.log(gameWord);
 // console.log(gameWord.length);
@@ -91,8 +112,6 @@ var tryCount = 8;
 // console.log(dispWord.length);
 
 				}//End get and Validate input function
-
-
 
 </script>
 
