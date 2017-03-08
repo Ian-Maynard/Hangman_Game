@@ -98,9 +98,9 @@ disPlaytile();
 						   return;
 						}
 						else {
-							 alert("WRONG!!");
+							 alert("WRONG!! You have "+tryCount+" left.");
 							 tryCount--;
-					
+
 							 return;
 							 } // GUESS INCORRECT
 				}//End get and Validate input function

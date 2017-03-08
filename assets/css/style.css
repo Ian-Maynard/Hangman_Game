@@ -17,9 +17,10 @@ align-content: center;
   width:100%;
   text-align: center;
   font-family: 'Cormorant SC', serif;
+  color:gray;
   font-size: 80px;
   font-weight: 700px;
-  text-shadow: 2px 4px 4px gray;
+  text-shadow: 1px 1px 1px red;
 }
   .letter {
     font-family: 'Creepster', serif;
