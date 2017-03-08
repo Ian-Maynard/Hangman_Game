@@ -6,114 +6,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-
-
 <body>
 
-<script>
-
-// function upDateDispWord(userGuess,gameWord,dispWord) {
-// } // Update displ
-// function disPlayIcon(){
-// } // Display the ICON
-
-function disPlaytile(){
-var printWord="", dispText= "";
-console.log("Gameword. Length : "+gameWord.length);
-
-	for (var i = 0; i <= gameWord.length; i++) {
-		console.log("Incrementer ",i);
-			if (guessAcc.indexOf(gameWord[i])!= -1){
-			   printWord=printWord+gameWord[i];
-			   console.log("Gameword: "+gameWord[i]+" printWord: "+ printWord);
-			}
-        // var dispTile = $("<button>");
-        // dispTile.addClass("letter-button letter tile-color");
-        // dispTile.attr("data-letter", gameWord[i]);
-        // dispTile.text(gameWord[i]);
-        // $("#buttons").append(dispWord);
-      }
+<div id="buttons"></div>
 
 
-	      if (printWord==gameWord)  {
-	      	dispText=" You are the Winner! "+printWord+
-	      	" and "+gameWord+" MATCH!"; 
-	      }
-		  else {
-			dispText="Not there yet! "+printWord+
-	      	" and "+gameWord+" Don't MATCH!"; 
-	      	console.log("Exiting - Gameword: "+gameWord+" printWord: "+ printWord);
-		  }   		
-	alert(dispText);
- }  // End disPlaytile 
 
-var asterixStore = "****************";
-var alphaBet = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var theWords = ["apple", "banana", "cherry","kiwi","lime","mango","orange","plum"];
-var gameWord = theWords[Math.floor(Math.random()* theWords.length)];
-var dispWord = asterixStore.substring(0,(gameWord.length));
-var userWins = 0, userLosses = 0;
-var playGame = true;
-var youWin   = false;
-var youLose	 = false;
-var guessAcc = "";
-var tryCount = 8;
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src:assets/javascript/game.js"> </script>
 
-// console.log(theWords);
-// console.log(gameWord);
-// console.log(gameWord.length);
-// console.log(dispWord);
-// console.log(dispWord.length);
-
-// Get and validate input //
-
-			document.onkeyup = function() {
-				// Get input
-				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-console.log("Gacc is: ", guessAcc);
-console.log("Gameword : "+gameWord+" Userguess : "+userGuess);
-
-						//Validate: Is Alpha?
-						if (alphaBet.indexOf(userGuess)== -1){
-							alert("Please enter an alphabetic character.");
-							return;
-						} //Validate Alpha
-
-						// Validate: Has this been entered before? 
-						if (guessAcc.indexOf(userGuess)!= -1){
-							alert("You entered "+userGuess+" already.");
-							tryCount--;
-							return;
-						// DISPLAY UPDATED HANGMAN ICON
-						}//Validate : Entered before
-
-						//Validate: correct guess 
-						if (gameWord.indexOf(userGuess) != -1){
-						   alert("Correct Guess!!")
-						   guessAcc=guessAcc+userGuess;
-						   disPlaytile();
-						   //Call Display routine
-						   return;
-						}
-						else {
-							 alert("WRONG!!");
-							 tryCount--;
-							 // DISPLAY UPDATED HANGMAN ICON
-							 return;
-							 } // GUESS INCORRECT
-
-				console.log("Gacc is: ", guessAcc);
-console.log("Gameword : "+gameWord+" Userguess : "+userGuess);
-
-// console.log(gameWord);
-// console.log(gameWord.length);
-// console.log(dispWord);
-// console.log(dispWord.length);
-
-				}//End get and Validate input function
-
-</script>
 
 </body>
 
