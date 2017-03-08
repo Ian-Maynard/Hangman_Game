@@ -1,24 +1,18 @@
 //Setup routines - Variable initialization 
 function printTheWord(){
 for (var i = 0; i <= (gameWord.length-1); i++) {
-
       var letterBtn = $("<button>");
           letterBtn.addClass("letter-button letter letter-button-color");
-
        letterBtn.attr("data-letter", 'gameWord[i]');
        letterBtn.text("gameWord[i]");
        $("#buttons").append(letterBtn);
-
       }
-
 }
-
 
 function disPlaytile(){
 var printWord="", dispText= ""; 
 var printLetter="*";	// Assign print character default
 $("#buttons").empty(); // Clear the display area 
-
 
 	for (var i = 0; i <= (gameWord.length-1); i++) {
  	 	   
@@ -37,33 +31,25 @@ $("#buttons").empty(); // Clear the display area
        	  letterBtn.text(printLetter);
        	  $("#buttons").append(letterBtn);
        	  // Generate and display current character
-			
       }
-
 	      if (printWord==gameWord)  {
-	      	dispText=" You are the Winner! "+printWord+
-	      	" and "+gameWord+" MATCH!"; 
-	      	playGame=false;
+	      	dispText=" You are the Winner!"; 
+	      	alert(dispText);
 	      }
-
 		  else {
 			dispText="Not there yet! "+printWord+
 	      	" and "+gameWord+" Don't MATCH!"; 
 		  }  
 
-	alert(dispText);
-
+ // Display Message
  }  // End disPlaytile 
 
-
-var asterixStore = "****************";
 var alphaBet = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var theWords = ["gallows", "rope","criminal","raven","knot","trapdoor","levers","death","hoodwink","murder",
 				"appeal","blindfold","shroud","corpse","grave","hangman","casket","warrant","hood","warden",
 				"guard","judge","jury","coroner","autopsy","priest","solitary","sentence","scaffold"];
 
 var gameWord = theWords[Math.floor(Math.random()* theWords.length)];
-var dispWord = asterixStore.substring(0,(gameWord.length));
 var userWins = 0, userLosses = 0;
 var playGame = true;
 var youWin   = false;
@@ -71,11 +57,12 @@ var youLose	 = false;
 var guessAcc = "";
 var tryCount = 10;
 
-disPlaytile();
+			disPlaytile();
+			alert("You have "+ tryCount+ " guesses. Guess one letter at a time, starting NOW!");
 
 			document.onkeyup = function() {
 				// Get input
-				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+				var userGuess = String.fromCharCode(event.keyCode).toLowerCase()
 
 						//Validate: Is Alpha?
 						if (alphaBet.indexOf(userGuess)== -1){
@@ -91,16 +78,15 @@ disPlaytile();
 
 						//Validate: correct guess 
 						if (gameWord.indexOf(userGuess) != -1) {
-						   alert("Correct Guess!!")
-						   guessAcc=guessAcc+userGuess;
+						   // alert("Correct Guess!! Guess again!");
+						   guessAcc=guessAcc+userGuess; //Accumulate correct guesses 
 						   disPlaytile();
 						   //Call Display routine
 						   return;
 						}
 						else {
-							 alert("WRONG!! You have "+tryCount+" left.");
+							 alert("WRONG!! You have "+tryCount+" tries left.");
 							 tryCount--;
-
 							 return;
 							 } // GUESS INCORRECT
 				}//End get and Validate input function

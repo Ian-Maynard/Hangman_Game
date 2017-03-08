@@ -7,11 +7,9 @@
 }  
 
 #tileRow{
-
+display: inline-block;
 align-content: center;
-
 }
-
 
 .header {
   width:100%;
@@ -24,12 +22,12 @@ align-content: center;
 }
   .letter {
     font-family: 'Creepster', serif;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 100px;
     width: 80px;
     height: 80px;
     border-width: 0px;
-    border-bottom-width: 1px;
+    border-bottom-width: 2px;
     padding: 20px;
     float: left;
     margin: 10px;
@@ -37,7 +35,8 @@ align-content: center;
   
   .letter-button-color {
     background-color: black;
-    color:blue;
+    color:grey;
+    text-shadow: 1px 1px 1px red;
     font-family: 'Creepster', serif;
   }
   
@@ -51,7 +50,6 @@ align-content: center;
   
   #buttons {
     padding-top: 60px;
-    align-content: center;
     background-color: black;
   }
 
@@ -63,8 +61,6 @@ align-content: center;
     width: 100px;
 }
 
-    /* Sticky footer styles
--------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
